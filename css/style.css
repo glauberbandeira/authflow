@@ -102,3 +102,56 @@ button:hover,
     color: #222;
     font-weight: bold;
 }
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+.dashboard-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.dashboard-card {
+    width: 100%;
+    max-width: 500px;
+
+    background: #ffffff;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+}
+
+.dashboard-card h1 {
+    margin-bottom: 30px;
+}
+
+.user-info {
+    text-align: left;
+
+    background: #f4f6f8;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    margin-bottom: 25px;
+}
+
+.user-info p {
+    margin-bottom: 10px;
+}
+
+.user-info p:last-child {
+    margin-bottom: 0;
+}

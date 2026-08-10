@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Permite que a página seja responsiva -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AuthFlow - Dashboard</title>
+
+    <!-- Estilos principais da aplicação -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="dashboard-container">
+
+        <section class="dashboard-card">
+
+            <h1>Bem-vindo!</h1>
+
+            <!--
+                O JavaScript preencherá essas informações
+                utilizando os dados do usuário autenticado.
+            -->
+            <div class="user-info">
+
+                <p>
+                    <strong>Nome:</strong>
+                    <span id="userName"></span>
+                </p>
+
+                <p>
+                    <strong>E-mail:</strong>
+                    <span id="userEmail"></span>
+                </p>
+
+            </div>
+
+
+            <!--
+                Botão utilizado posteriormente para encerrar
+                a sessão do usuário.
+            -->
+            <button id="logoutButton">
+                Sair
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!--
+        Este arquivo contém a lógica responsável por:
+        - verificar a sessão
+        - exibir os dados do usuário
+        - controlar o acesso à dashboard
+    -->
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

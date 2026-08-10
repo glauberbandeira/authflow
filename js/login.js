@@ -192,7 +192,8 @@ loginForm.addEventListener("submit", function (event) {
     // foi concluído.
     // --------------------------------------------------
 
-    formMessage.textContent =
-        "Login realizado com sucesso!";
+    // Após autenticar o usuário, redirecionamos para
+    // a área protegida da aplicação.
+    window.location.href = "dashboard.html";
 
 });
