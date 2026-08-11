@@ -53,13 +53,17 @@
     </main>
 
 
-    <!--
-        Este arquivo contém a lógica responsável por:
-        - verificar a sessão
-        - exibir os dados do usuário
-        - controlar o acesso à dashboard
-    -->
-    <script src="js/dashboard.js"></script>
+        <!--
+            auth.js contém as funções de autenticação
+            utilizadas pela dashboard.
+        -->
+        <script src="js/auth.js"></script>
+
+        <!--
+            dashboard.js utiliza as funções definidas
+            anteriormente em auth.js.
+        -->
+        <script src="js/dashboard.js"></script>
 
 </body>
 

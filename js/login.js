@@ -4,30 +4,24 @@
 
 
 // ------------------------------------------------------
-// 1. Selecionamos o formulário pelo seu ID.
+// Selecionamos o formulário de login.
 // ------------------------------------------------------
 
 const loginForm = document.getElementById("loginForm");
 
 
 // ------------------------------------------------------
-// 2. Escutamos o evento "submit" do formulário.
-//
-// Quando o usuário clicar em "Entrar", essa função
-// será executada.
+// Executamos a lógica quando o formulário for enviado.
 // ------------------------------------------------------
 
 loginForm.addEventListener("submit", function (event) {
 
-    // Impede o comportamento padrão do formulário.
-    //
-    // Sem isso, o navegador recarregaria a página
-    // automaticamente.
+    // Impede o navegador de recarregar a página.
     event.preventDefault();
 
 
     // --------------------------------------------------
-    // 3. Capturamos os valores digitados pelo usuário.
+    // Capturamos os valores digitados.
     // --------------------------------------------------
 
     const email = document
@@ -42,73 +36,58 @@ loginForm.addEventListener("submit", function (event) {
 
 
     // --------------------------------------------------
-    // 4. Selecionamos os elementos onde exibiremos
-    //    mensagens para o usuário.
+    // Selecionamos os elementos de mensagem.
     // --------------------------------------------------
 
-    const emailError = document.getElementById("emailError");
+    const emailError =
+        document.getElementById("emailError");
 
-    const passwordError = document.getElementById("passwordError");
+    const passwordError =
+        document.getElementById("passwordError");
 
-    const formMessage = document.getElementById("formMessage");
+    const formMessage =
+        document.getElementById("formMessage");
 
 
-    // --------------------------------------------------
-    // 5. Limpamos mensagens antigas.
-    //
-    // Isso evita que uma mensagem de uma tentativa
-    // anterior continue aparecendo.
-    // --------------------------------------------------
-
+    // Limpamos mensagens anteriores.
     emailError.textContent = "";
-
     passwordError.textContent = "";
-
     formMessage.textContent = "";
 
 
     // --------------------------------------------------
-    // 6. Validação básica dos campos.
+    // Validação dos campos.
     // --------------------------------------------------
 
     let isValid = true;
 
 
-    // Verifica se o e-mail foi preenchido.
-
     if (!email) {
 
-        emailError.textContent = "Digite seu e-mail.";
+        emailError.textContent =
+            "Digite seu e-mail.";
 
         isValid = false;
     }
 
-
-    // Verifica se a senha foi preenchida.
 
     if (!password) {
 
-        passwordError.textContent = "Digite sua senha.";
+        passwordError.textContent =
+            "Digite sua senha.";
 
         isValid = false;
     }
 
 
-    // Se existir algum erro de validação,
-    // interrompemos a execução.
-
+    // Se houver erro, interrompemos o processo.
     if (!isValid) {
         return;
     }
 
 
     // --------------------------------------------------
-    // 7. Recuperamos os usuários armazenados.
-    //
-    // localStorage sempre armazena dados como texto.
-    //
-    // Por isso usamos JSON.parse() para transformar
-    // o texto novamente em um array JavaScript.
+    // Recuperamos os usuários cadastrados.
     // --------------------------------------------------
 
     const users = JSON.parse(
@@ -117,13 +96,8 @@ loginForm.addEventListener("submit", function (event) {
 
 
     // --------------------------------------------------
-    // 8. Procuramos um usuário que tenha:
-    //
-    // - o mesmo e-mail
-    // - a mesma senha
-    //
-    // O método "find()" retorna o primeiro usuário
-    // que satisfaz a condição.
+    // Procuramos um usuário com as credenciais
+    // informadas.
     // --------------------------------------------------
 
     const user = users.find(function (user) {
@@ -137,7 +111,8 @@ loginForm.addEventListener("submit", function (event) {
 
 
     // --------------------------------------------------
-    // 9. Verificamos se encontramos o usuário.
+    // Se não encontramos o usuário, informamos que
+    // as credenciais estão incorretas.
     // --------------------------------------------------
 
     if (!user) {
@@ -150,12 +125,9 @@ loginForm.addEventListener("submit", function (event) {
 
 
     // --------------------------------------------------
-    // 10. Login realizado.
+    // Criamos o objeto da sessão.
     //
-    // Agora precisamos guardar uma informação dizendo
-    // que existe um usuário autenticado.
-    //
-    // Para isso vamos criar uma sessão simples.
+    // Não colocamos a senha aqui.
     // --------------------------------------------------
 
     const loggedUser = {
@@ -170,30 +142,16 @@ loginForm.addEventListener("submit", function (event) {
 
 
     // --------------------------------------------------
-    // 11. Salvamos a sessão no localStorage.
-    //
-    // Observe que NÃO salvamos a senha na sessão.
-    //
-    // A dashboard poderá usar esses dados para saber
-    // quem está conectado.
+    // Utilizamos a função centralizada de autenticação.
     // --------------------------------------------------
 
-    localStorage.setItem(
-        "loggedUser",
-        JSON.stringify(loggedUser)
-    );
+    setLoggedUser(loggedUser);
 
 
     // --------------------------------------------------
-    // 12. Redirecionamos o usuário.
-    //
-    // A dashboard ainda será criada no próximo passo.
-    // Por enquanto, vamos apenas demonstrar que o login
-    // foi concluído.
+    // Usuário autenticado → dashboard.
     // --------------------------------------------------
 
-    // Após autenticar o usuário, redirecionamos para
-    // a área protegida da aplicação.
     window.location.href = "dashboard.html";
 
 });
